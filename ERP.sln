@@ -4,14 +4,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERP.API", "ERP.API\ERP.API.csproj", "{3D6AAA73-B329-48D9-8BBF-018F5FE7ECE0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9A5C2E0C-74C1-45D7-A589-CCE454A9B71A} = {9A5C2E0C-74C1-45D7-A589-CCE454A9B71A}
+		{E5C75E7E-4D7B-4D25-9426-A385E8004425} = {E5C75E7E-4D7B-4D25-9426-A385E8004425}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERP.Aplication", "ERP.Aplication\ERP.Aplication.csproj", "{9A5C2E0C-74C1-45D7-A589-CCE454A9B71A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{89D8866C-9112-46E1-A056-90C3CA6C7C74} = {89D8866C-9112-46E1-A056-90C3CA6C7C74}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERP.Domain", "ERP.Domain\ERP.Domain.csproj", "{89D8866C-9112-46E1-A056-90C3CA6C7C74}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERP.Infra.Data", "ERP.Infra.Data\ERP.Infra.Data.csproj", "{360CF4F1-A930-4FF3-A818-55FDB3E3B504}"
+	ProjectSection(ProjectDependencies) = postProject
+		{89D8866C-9112-46E1-A056-90C3CA6C7C74} = {89D8866C-9112-46E1-A056-90C3CA6C7C74}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERP.Infra.IoC", "ERP.Infra.IoC\ERP.Infra.IoC.csproj", "{E5C75E7E-4D7B-4D25-9426-A385E8004425}"
+	ProjectSection(ProjectDependencies) = postProject
+		{360CF4F1-A930-4FF3-A818-55FDB3E3B504} = {360CF4F1-A930-4FF3-A818-55FDB3E3B504}
+		{89D8866C-9112-46E1-A056-90C3CA6C7C74} = {89D8866C-9112-46E1-A056-90C3CA6C7C74}
+		{9A5C2E0C-74C1-45D7-A589-CCE454A9B71A} = {9A5C2E0C-74C1-45D7-A589-CCE454A9B71A}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
