@@ -1,16 +1,20 @@
-import {createStore} from 'vuex'
-const index = createStore(
-    {
-state : {
-    login :{
-        nome : 'Vinicius'
-    }
-},
-mutations :{
-    setName(state, login){
-        state.login.nome = login
-    }
-}
-})
+import { createStore } from 'vuex';
 
-export default index
+const store = createStore({
+  modules: {
+    autenticacao: {
+      state: {
+        login: 'Vinicius',
+        senha: '',
+        token: ''
+      },
+      mutations: {
+        setName(state, novoLogin) {
+          state.login = novoLogin;
+        }
+      }
+    }
+  }
+});
+
+export default store;

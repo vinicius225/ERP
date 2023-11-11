@@ -1,130 +1,140 @@
 <template>
-  <div class="menu">
-    <div class="menu-esquerdo">
-      <h2 style="color:white; margin-top:10px"><b>MAESTRIA SOFTWARE</b></h2>
-      <div class="conteudo-esquerdo">
-        <div>
-          <img src="@/imgs/undraw_predictive_analytics_re_wxt8.svg" class="img-anuncio" alt="Homem analisando dados">
-          <h3>Obtenha os melhores resultados da sua equipe, tudo em um só lugar</h3>
-        </div>
-      </div>
-    </div>
-    <div >
-      <div class="conteudo">
-        <div class="login">
-          <a-form
-            :model="usuario"
-            name="basic"
-            :label-col="{ span: 8 }"
-            :wrapper-col="{ span: 8 }"
-            autocomplete="off"
-            @finish="onFinish"
-            @finishFailed="onFinishFailed"
-          >
-          <a-form
-            :model="usuario"
-            name="basic"
-            :label-col="{ span: 8 }"
-            :wrapper-col="{ span: 8 }"
-            autocomplete="off"
-            @finish="onFinish"
-            @finishFailed="onFinishFailed"
-          >
-            <a-form-item
-              label="login"
-              name="login"
-              :rules="[{ required: true, message: 'Please input your login!' }]"
-            >
-              <a-input v-model:value="usuario.login" />
-            </a-form-item>
+  <div class="conteudo">
+    <header>
+      <h2><b>MAESTRIA SOFTWARE</b></h2>
+      <img src="@/imgs/undraw_predictive_analytics_re_wxt8.svg" alt="" class="img-logo" />
+    </header>
+    <div class="formulario">
+    <a-form
+    :model="usuario"
+    name="normal_login"
+    class="login-form"
+    @finish="onFinish"
+    @finishFailed="onFinishFailed"
+  >
+    <a-form-item
+      label="Login"
+      name="login"
+      :rules="[{ required: true, message: 'Please input your username!' }]"
+    >
+      <a-input v-model:value="usuario.login">
+        <template #prefix>
+          <UserOutlined class="site-form-item-icon" />
+        </template>
+      </a-input>
+    </a-form-item>
 
-            <a-form-item
-              label="senha"
-              name="senha"
-              :rules="[{ required: true, message: 'Please input your senha!' }]"
-            >
-              <a-input-password v-model:value="usuario.senha" />
-            </a-form-item>
+    <a-form-item
+      label="Senha"
+      name="senha"
+      :rules="[{ required: true, message: 'Please input your password!' }]"
+    >
+      <a-input-password v-model:value="usuario.senha">
+        <template #prefix>
+          <LockOutlined class="site-form-item-icon" />
+        </template>
+      </a-input-password>
+    </a-form-item>
 
-            <a-form-item name="relembre" :wrapper-col="{ offset: 8, span: 2 }">
-              <a-checkbox v-model:checked="usuario.relembre">Lrembre me</a-checkbox>
-            </a-form-item>
+    <a-form-item>
+      <a-form-item name="lembre-me" no-style>
+        <a-checkbox v-model:checked="usuario.lembre">Remember me</a-checkbox>
+      </a-form-item>
+      <a class="login-form-forgot" href="">Forgot password</a>
+    </a-form-item>
 
-            <a-form-item :wrapper-col="{ offset: 8, span: 8 }">
-              <a-button style="width: 100%;" type="primary" html-type="submit">Logar</a-button>
-            </a-form-item>
-          </a-form>
-          </a-form>
-        </div>
-      </div>
-    </div>
+    <a-form-item>
+      <a-button :disabled="disabled" type="primary" html-type="submit" @click="logar"  class="login-form-button">
+        Log in
+      </a-button>
+      Or
+      <a href="">register now!</a>
+    </a-form-item>
+  </a-form>
+</div>
     <footer>
-      <div class="footer-content">
-        <p>&copy; 2023 - Todos os direitos reservados</p>
-        <p>Entre em contato pelo e-mail: contato@exemplo.com</p>
-        <nav>
-          <ul>
-            <li><a href="#">Termos de uso</a></li>
-            <li><a href="#">Política de privacidade</a></li>
-            <li><a href="#">Sobre nós</a></li>
-          </ul>
-        </nav>
-      </div>
+      <p>&copy; 2023 - Todos os direitos reservados</p>
     </footer>
   </div>
 </template>
 
 <script setup>
 import { reactive } from 'vue'
+import API from '@/api'
+import { UserOutlined, InfoCircleOutlined } from '@ant-design/icons-vue'
 
 const usuario = reactive({
   login: '',
   senha: '',
   relembre: true
 })
+const logar = ()=>{
+  debugger
+API.usuario.autenticar(this.usuario).then((result)=>{
+
+}).catch((error)=>{
+  console.log(error)
+})
+}
 </script>
 
 <style>
+
+.formulario{
+width: 70vh;
+margin-top: 3vh;
+margin-left: auto; 
+margin-right: auto;
+}
 body {
   overflow: hidden;
 }
-
-.menu {
-  display: flex;
-  flex-direction: column; /* Alterado para column */
-}
-
-.menu-esquerdo,
-.menu-direito {
-  width: 100%; /* Alterado para 100% */
-}
-
-.menu-esquerdo {
+h2 {
   text-align: center;
-}
-
-.img-anuncio {
-  height: 250px;
-  margin-top: 20px; /* Alterado para 20px */
-}
-
-.conteudo {
-  text-align: center;
-  margin-top: 30px; /* Alterado para 30px */
-}
-
-.login {
-  width: 100%; /* Alterado para 100% */
 }
 footer {
+  background-color: #333;
+  color: #fff; 
+  text-align: center;
+position: absolute;
+bottom: 0;
+left: 0;
+}
+.conteudo {
+  margin-left: auto;
+  margin-right: auto;
+
+
+
+}
+.form{
+  display: inline;
+}
+.img-logo {
+  height: 200px;
+  width: 300px;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+
+}
+@media screen  and  (max-width: 600px){
+  .img-logo {
+    height: 300px;
+    width: 300px;
+    margin-top: 40px;
+  }
+}
+footer {
+  display: block;
   position: absolute;
   bottom: 0;
   background-color: rgb(47 46 65);
-  color: #FFF;
+  color: #fff;
   width: 100%;
-  height: 100px;    
+  height: 6%;
   text-align: center;
-  line-height: 100px;
 }
-
 </style>

@@ -1,6 +1,8 @@
 body{
   background-color:  hsl(0deg 0% 65.1%);
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  height: 100%;
+  width: 100%;
   
 
 };
