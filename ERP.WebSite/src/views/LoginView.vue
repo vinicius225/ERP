@@ -60,7 +60,7 @@
 
 <script setup>
 import { reactive } from 'vue'
-import API from '@/api'
+import API from '@/api/usuario'
 import { UserOutlined, InfoCircleOutlined } from '@ant-design/icons-vue'
 
 const usuario = reactive({
@@ -68,7 +68,7 @@ const usuario = reactive({
   senha: '',
   relembre: true
 })
-const logar = ()=>{
+function logar(){
   debugger
 API.usuario.autenticar(this.usuario).then((result)=>{
 

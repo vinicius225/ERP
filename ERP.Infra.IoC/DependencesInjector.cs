@@ -14,10 +14,12 @@ namespace ERP.Infra.IoC
         {
             services.AddSingleton<IUsuarioServices, UsuarioServices>();
             services.AddSingleton<IAutenticacaoService, AutenticacaoService>();
+            services.AddSingleton<ILogService, LogService>();
         }
         public static void RepositoryInjector(this IServiceCollection services)
         {
             services.AddSingleton<IUsuarioRepository, UsuarioRepository>();
+            services.AddSingleton<ILogRepository, LogRepository>();
         }
         public static void DataBaseInjector(this IServiceCollection services)
         {
